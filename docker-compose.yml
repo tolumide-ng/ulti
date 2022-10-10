@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+    api:
+        build:
+            dockerfile: Dockerfile
+            context: ./packages/api
+        environment:
+            APP_PORT: ${APP_PORT}
+        ports:
+            - "3000:3000"
+    db:
+        image: postgres:14
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+    client:
+        build:
+            dockerfile: Dockerfile
+            context: ./packages/client
+        environment:
+            BASE_URL: ${BASE_URL}
+        ports:
+            - "5000:8080"

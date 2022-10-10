@@ -15,7 +15,7 @@ app.use("*", (req, res) => {
     ResponseGenerator.sendError(res, 404);
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.APP_PORT || 3000;
 
 app.listen(PORT, () => {
     process.stdout.write(`Listening on port ${PORT}`);
